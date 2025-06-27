@@ -1,0 +1,13 @@
+# Deny direct access to files in this directory
+# Only allow access through the download controllers
+
+<Files "*">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Allow access only to the download controllers
+<FilesMatch "^(downloadWork)\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

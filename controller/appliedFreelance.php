@@ -14,6 +14,10 @@ if (isset($_GET['job_id'])) {
                 'freelancer_name' => isset($application['username']) ? $application['username'] : null,
                 'freelancer_email' => $application['email'],
                 'application_text' => $application['application_text'],
+                'cv_file' => $application['cv_file'],
+                'work_file' => $application['work_file'],
+                'work_description' => $application['work_description'],
+                'work_submitted_date' => $application['work_submitted_date'],
                 'application_date' => $application['application_date'],
                 'status' => $application['status'],
             ];

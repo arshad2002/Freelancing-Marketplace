@@ -1,124 +1,254 @@
-/* Table Styling */
-table {
-    width: 400px;
-    margin: 50px auto;
-    background-color: #fff;
-    border-radius: 8px; /* Enhanced border radius */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow for depth */
-    overflow: hidden; /* Ensures content stays within rounded corners */
-    border-collapse: separate;
+/* ===================================
+   SIGNUP PAGE STYLES
+   Modern Dark Theme with FreeMarket Branding
+   =================================== */
+
+/* Main container layout */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-primary);
 }
 
-/* Fieldset Styling */
+header {
+    background: var(--gradient-card);
+    border-bottom: 2px solid var(--border-primary);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.header-content h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Signup Container */
+.signup-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 3rem;
+    background: var(--gradient-card);
+    border: 2px solid var(--border-primary);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.signup-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    opacity: 0.9;
+}
+
 fieldset {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 legend {
-    font-size: 1.4em; /* Slightly larger font size */
-    font-weight: bold;
-    color: #333; /* Enhanced contrast */
-    padding: 0 10px; /* Adds spacing */
-}
-
-/* Form Styling */
-form {
-    margin-top: 20px;
-    font-family: 'Arial', sans-serif;
-    color: #555;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-select {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+legend {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
     width: 100%;
-    padding: 12px; /* Increased padding */
-    margin: 8px 0; /* Increased margin for spacing */
+}
+
+/* Form Input Styling */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 0.875rem;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
+    color: var(--text-primary);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all var(--transition-normal);
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-    background-color: #fefefe;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    font-family: inherit;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-select:focus {
-    border-color: #4caf50; /* Highlighted border */
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Subtle focus effect */
+.input-group input:focus,
+.input-group select:focus {
     outline: none;
+    border-color: var(--accent-primary);
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-glow);
+    transform: scale(1.01);
 }
 
-/* Submit Button Styling */
+.input-group select {
+    cursor: pointer;
+}
+
+/* Error styling */
+.diverror {
+    color: var(--error);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-weight: 500;
+/* Submit Button and Actions */
+hr {
+    border: none;
+    height: 1px;
+    background: var(--border-primary);
+    margin: 2rem 0 1.5rem 0;
+    opacity: 0.3;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
 input[type="submit"] {
     width: 100%;
-    padding: 12px; /* Larger padding for better touch targets */
-    margin-top: 10px;
-    background-color: #4caf50;
-    color: #fff;
+    padding: 0.875rem;
+    background: var(--gradient-primary);
+    color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 1.1em; /* Slightly larger font size */
-    font-weight: bold;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    transition: all var(--transition-normal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+input[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-slow);
+}
+
+input[type="submit"]:hover::before {
+    left: 100%;
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
-    transform: scale(1.03); /* Subtle scaling effect */
+    background: var(--gradient-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
 }
 
-/* Link Styling */
-a {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
+.actions a {
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    transition: color 0.3s ease; /* Smooth color transition */
+    color: var(--accent-primary);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    font-size: 0.95rem;
 }
 
-a:hover {
-    color: #4caf50;
-}
-
-/* Additional Enhancements */
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f2f2f2; /* Light background for contrast */
-    margin: 0;
-    padding: 0;
+.actions a:hover {
+    color: var(--accent-secondary);
+    text-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
-    table {
-        width: 90%;
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 0;
     }
-
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    select {
-        padding: 10px;
-        font-size: 0.9em;
+    
+    .header-content h1 {
+        font-size: 2.5rem;
     }
-
+    
+    .signup-container {
+        max-width: 90%;
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    legend {
+        font-size: 1.5rem;
+    }
+    
+    .input-group input,
+    .input-group select,
     input[type="submit"] {
-        font-size: 1em;
-    }
-
-    a {
-        font-size: 0.9em;
+        padding: 0.75rem;
     }
 }
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .signup-container {
+        padding: 1.5rem;
+    }
+    
+    legend {
+        font-size: 1.3rem;
+    }
+}
+
+

@@ -1,0 +1,13 @@
+# Deny direct access to files in this directory
+# Only allow access through the download/view controllers
+
+<Files "*">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Allow access only to the download and view controllers
+<FilesMatch "^(downloadCV|viewCV)\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

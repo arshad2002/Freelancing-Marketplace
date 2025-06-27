@@ -8,51 +8,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Settings</title>
+    <title>User Settings - FreeMarket</title>
+    <link rel="stylesheet" href="../asset/css/main-theme.css">
+    <link rel="stylesheet" href="../asset/css/index.css">
+    <link rel="stylesheet" href="../asset/css/navbar.css">
     <link rel="stylesheet" href="../asset/css/settings.css">
-    <script src="../js/settingsValidation.js"></script>
+    <script src="../asset/js/settingsValidation.js"></script>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="<?php
-            if ($_SESSION['user_type'] === 'client') {
-                echo 'clientDashboard.php';
-            } elseif ($_SESSION['user_type'] === 'freelancer') {
-                echo 'freelancerDashboard.php';
-            } elseif ($_SESSION['user_type'] === 'admin') {
-                echo 'adminDashboard.php';
-            }
-        ?>">Home</a> |
-        <a href="profile.php">Profile</a> |
-        <a href="settings.php">Settings</a> |
-        <a href="../controller/logoutCheck.php">Logout</a>
-    </nav>
+    <?php 
+    include_once("../view/components/navbar.php");
+    renderNavbar('settings');
+    ?>
 
-    <section class="settings-section">
-        <h2>User Settings</h2>
+    <main>
+        <section class="settings-header">
+            <h2>User Settings</h2>
+            
+            <?php
+                require_once("../controller/errorShowing.php");
+            ?>
+        </section>
 
-        <?php
-            require_once("../controller/errorShowing.php");
-        ?>
+        <div class="settings-container">
+            <div class="settings-card">
+                <h3>Change Password</h3>
+                <form action="../controller/settingsController.php" method="post" onsubmit="return validatePassword();">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password:</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+                    </div>
+                    <button type="submit" name="changePassword" class="btn-primary">Change Password</button>
+                </form>
+            </div>
 
-        <h3>Change Password</h3>
-        <form action="../controller/settingsController.php" method="post" onsubmit="return validatePassword();">
-            <label for="currentPassword">Current Password:</label>
-            <input type="password" id="currentPassword" name="currentPassword" required><br>
-            <label for="newPassword">New Password:</label>
-            <input type="password" id="newPassword" name="newPassword" required><br>
-            <input type="submit" name="changePassword" value="Change Password">
-        </form>
+            <div class="settings-card">
+                <h3>Change Email</h3>
+                <form action="../controller/settingsController.php" method="post">
+                    <div class="form-group">
+                        <label for="newEmail">New Email:</label>
+                        <input type="email" id="newEmail" name="newEmail" required>
+                    </div>
+                    <button type="submit" name="changeEmail" class="btn-primary">Change Email</button>
+                </form>
+            </div>
+        </div>
+    </main>
 
-        <h3>Change Email</h3>
-        <form action="../controller/settingsController.php" method="post">
-            <label for="newEmail">New Email:</label>
-            <input type="email" id="newEmail" name="newEmail" required><br>
-            <input type="submit" name="changeEmail" value="Change Email">
-        </form>
-    </section>
+    <footer>
+        <p>&copy; 2025 FreeMarket. All Rights Reserved.</p>
+    </footer>
 
+    <?php renderNavbarScript(); ?>
 </body>
 </html>
             

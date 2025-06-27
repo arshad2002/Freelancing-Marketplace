@@ -1,80 +1,265 @@
+/* ===================================
+   MODERN DARK THEME - SETTINGS PAGE
+   Consistent with Profile & Main Theme
+   =================================== */
+
+/* Body & Base Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: var(--gradient-bg);
+    min-height: 100vh;
     margin: 0;
     padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
 }
 
-.navbar {
-    background-color: #333;
-    color: white;
-    padding: 10px;
+/* Settings Header */
+.settings-header {
     text-align: center;
+    margin: 2rem 0;
+    padding: 0 2rem;
 }
 
-.navbar a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
+.settings-header h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
 }
 
-.navbar a:hover {
-    text-decoration: underline;
-}
-
-.settings-section {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-}
-
-h3 {
-    margin-top: 20px;
-    color: #555;
-}
-
-form {
+/* Main Settings Container */
+.settings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem 2rem;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2rem;
 }
 
-label {
-    font-weight: bold;
-    color: #333;
+/* Settings Cards */
+.settings-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md-md);
+    transition: all var(--transition-normal);
+    position: relative;
 }
 
+.settings-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 16px 16px 0 0;
+}
+
+.settings-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md-lg);
+    border-color: var(--accent-primary);
+}
+
+.settings-card h3 {
+    color: var(--accent-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.settings-card h3:first-child::before {
+    content: '🔒';
+    font-size: 1.25rem;
+}
+
+.settings-card:last-child h3::before {
+    content: '📧';
+    font-size: 1.25rem;
+}
+
+/* Form Styling */
+.settings-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--accent-secondary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+}
+
+/* Input Styling */
 input[type="password"],
-input[type="email"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+input[type="email"],
+input[type="text"] {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
+    color: var(--text-primary);
+    border-radius: 8px;
+    transition: all var(--transition-normal);
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-input[type="submit"] {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #4CAF50;
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    background: var(--surface-hover);
+}
+
+input[type="password"]:hover,
+input[type="email"]:hover,
+input[type="text"]:hover {
+    border-color: var(--accent-secondary);
+}
+
+/* Button Styling */
+.btn-primary {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: var(--gradient-secondary);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all var(--transition-normal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    align-self: flex-start;
+    min-width: 150px;
 }
 
-input[type="submit"]:hover {
-    background-color: #45a049;
+.btn-primary:hover {
+    background: var(--gradient-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md-glow);
 }
 
-input[type="submit"]:disabled {
-    background-color: #ccc;
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    background: #6b7280;
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Success/Error Messages */
+.success-message,
+.error-message {
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    text-align: center;
+    animation: slideDown 0.4s ease-out;
+}
+
+.success-message {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.15) 100%);
+    border: 1px solid var(--accent-success);
+    color: var(--accent-success);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.error-message {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.15) 100%);
+    border: 1px solid var(--accent-danger);
+    color: var(--accent-danger);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1.5rem 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-primary);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .settings-container {
+        padding: 0 1rem 2rem;
+        gap: 1.5rem;
+    }
+    
+    .settings-card {
+        padding: 1.5rem;
+    }
+    
+    .settings-header {
+        margin: 1.5rem 0;
+        padding: 0 1rem;
+    }
+    
+    .form-group {
+        gap: 0.75rem;
+    }
+    
+    .btn-primary {
+        width: 100%;
+        align-self: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-header h2 {
+        font-size: 1.75rem;
+    }
+    
+    .settings-card {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+    
+    .settings-card h3 {
+        font-size: 1.25rem;
+    }
 }

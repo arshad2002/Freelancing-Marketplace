@@ -1,0 +1,234 @@
+# Freelancing Marketplace - Git Ignore File
+
+# ===========================================
+# PHP & Web Development
+# ===========================================
+
+# PHP specific
+*.log
+*.cache
+*.tmp
+
+# Composer dependencies (if using Composer)
+/vendor/
+composer.lock
+
+# ===========================================
+# Database & Configuration
+# ===========================================
+
+# Database configuration files (if sensitive)
+config/database.php
+config/db_config.php
+.env
+.env.local
+.env.production
+
+# Database backup files
+*.sql.gz
+*.sql.bak
+backup/
+dumps/
+
+# ===========================================
+# Uploaded Files & User Content
+# ===========================================
+
+# CV files uploaded by freelancers
+/asset/cv/*.pdf
+/asset/cv/*.doc
+/asset/cv/*.docx
+
+# Profile images
+/asset/images/profiles/
+/asset/images/uploads/
+
+# Any other user uploads
+uploads/
+files/
+
+# Keep directory structure but ignore content
+/asset/cv/*
+!/asset/cv/.htaccess
+!/asset/cv/index.html
+
+# ===========================================
+# IDE & Editor Files
+# ===========================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PHPStorm / IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===========================================
+# Operating System Files
+# ===========================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Icon?
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===========================================
+# Temporary & Cache Files
+# ===========================================
+
+# Temporary files
+temp/
+tmp/
+*.temp
+*.tmp
+
+# Cache directories
+cache/
+.cache/
+
+# Session files
+sessions/
+*.sess
+
+# Error logs
+error.log
+error_log
+php_errors.log
+
+# ===========================================
+# Security & Sensitive Information
+# ===========================================
+
+# Configuration files with sensitive data
+config.php
+settings.php
+local_config.php
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+
+# API keys and secrets
+secrets/
+.secrets
+api_keys.txt
+
+# ===========================================
+# Development & Testing
+# ===========================================
+
+# Testing
+tests/coverage/
+phpunit.xml
+.phpunit.result.cache
+
+# Development tools
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+build/
+dist/
+.build/
+
+# ===========================================
+# Version Control
+# ===========================================
+
+# Git
+.git/
+.gitattributes
+
+# SVN
+.svn/
+
+# ===========================================
+# Documentation & Notes
+# ===========================================
+
+# Personal notes
+notes.txt
+todo.txt
+README.local.md
+
+# Documentation builds
+docs/_build/
+
+# ===========================================
+# Project Specific
+# ===========================================
+
+# XAMPP specific
+xampp/
+htdocs/phpmyadmin/
+
+# Local development files
+local/
+dev/
+debug/
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# ===========================================
+# Keep Important Files
+# ===========================================
+
+# Force include important files even if they match patterns above
+!.htaccess
+!*.example
+!README.md
+!LICENSE
+!CHANGELOG.md

@@ -3,29 +3,32 @@
     require_once("../controller/authCheck.php");
     checkLoggedIn();
 ?>
-<html>
+<html lang="en">
 <head>
-    <title>Inbox</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - FreeMarket</title>
+    <link rel="stylesheet" href="../asset/css/main-theme.css">
     <link rel="stylesheet" href="../asset/css/index.css">
+    <link rel="stylesheet" href="../asset/css/navbar.css">
 </head>
 <body>
-    <nav align="right">
-        <a href="<?php
-        if ($_SESSION['user_type'] === 'client') {
-            echo 'clientDashboard.php';
-        } elseif ($_SESSION['user_type'] === 'freelancer') {
-            echo 'freelancerDashboard.php';
-        } elseif ($_SESSION['user_type'] === 'admin') {
-            echo 'adminDashboard.php';
-        } else {
-        }
-        ?>">Home</a>|
-            <a href="profile.php">Profile</a>|
-            <a href="settings.php">Settings</a>|
-            <a href="../controller/logoutCheck.php">Logout</a>
-    </nav>
-    <section>
+    <?php 
+    include_once("../view/components/navbar.php");
+    renderNavbar('inbox');
+    ?>
+    
+    <main>
+        <section class="welcome">
+            <h2>Messages</h2>
+            <p>Your message inbox will be displayed here.</p>
+        </section>
+    </main>
 
-    </section>
+    <footer>
+        <p>&copy; 2025 FreeMarket. All Rights Reserved.</p>
+    </footer>
+
+    <?php renderNavbarScript(); ?>
 </body>
 </html>

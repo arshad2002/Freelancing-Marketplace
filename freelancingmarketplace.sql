@@ -32,16 +32,15 @@ CREATE TABLE `applications` (
   `job_id` int(11) DEFAULT NULL,
   `freelancer_id` int(11) DEFAULT NULL,
   `application_text` text DEFAULT NULL,
+  `cv_file` varchar(255) DEFAULT NULL,
+  `work_file` varchar(255) DEFAULT NULL,
+  `work_description` text DEFAULT NULL,
+  `work_submitted_date` timestamp NULL DEFAULT NULL,
   `application_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` enum('pending','accepted','rejected') DEFAULT 'pending'
+  `status` enum('pending','accepted','rejected','work_submitted','completed') DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `applications`
---
 
-INSERT INTO `applications` (`application_id`, `job_id`, `freelancer_id`, `application_text`, `application_date`, `status`) VALUES
-(1, 35, 4, 'i like to apply for the jobp.please accept me.', '2023-12-12 16:33:46', 'pending');
 
 -- --------------------------------------------------------
 
@@ -60,26 +59,7 @@ CREATE TABLE `jobs` (
   `post_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `jobs`
---
 
-INSERT INTO `jobs` (`job_id`, `client_id`, `title`, `description`, `job_type`, `payment`, `status`, `post_date`) VALUES
-(13, 3, 'write content', 'aaaa', 'hourly', 1234.00, 'open', '2023-11-12 21:22:28'),
-(14, 5, 'Video Editing', 'aaa', 'hourly', 1200.00, 'open', '2023-11-13 07:08:49'),
-(17, 2, 'aa', 'asss', '', 12.00, 'open', '2023-11-15 06:39:00'),
-(29, 2, 'Video Editing', 'edit it', 'fixed', 25.00, 'open', '2023-11-22 07:31:16'),
-(30, 2, 'Video Editing', 'hello', 'hourly', 25.00, 'open', '2023-11-27 05:13:15'),
-(31, 2, 'aa', 'aweda', 'hourly', 14.00, 'open', '2023-11-27 05:18:05'),
-(32, 2, 'Video Editing', 'edi', 'hourly', 12.00, 'open', '2023-11-27 05:39:41'),
-(33, 2, 'Video Editing', 'byyyy', 'hourly', 12.00, 'open', '2023-12-12 06:49:46'),
-(34, 2, 'aa', 'aaaaaaaaa', 'fixed', 12.00, 'open', '2023-12-12 17:15:01'),
-(35, 2, 'Video Editing', 'aa', '', 1200.00, 'open', '2023-12-12 17:15:12'),
-(36, 18, 'Video Editing', 'I need a video editor', 'hourly', 1200.00, 'open', '2023-12-12 17:51:13'),
-(37, 2, 'aa', 'ss', 'fixed', 1200.00, 'open', '2023-12-12 18:37:26'),
-(38, 2, 'aaaaaaaaaaaa', 'qqqqqqqqqqqqqq', 'hourly', 1200.00, 'open', '2023-12-12 18:38:59'),
-(39, 20, 'Wright essay', 'Hello', '', 2300.00, 'open', '2023-12-13 05:27:37'),
-(40, 21, 'Video', 'aa', '', 13.00, 'open', '2023-12-13 07:55:40');
 
 -- --------------------------------------------------------
 
@@ -125,32 +105,7 @@ CREATE TABLE `users` (
   `registration_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `users`
---
 
-INSERT INTO `users` (`user_id`, `username`, `email`, `PASSWORD`, `user_type`, `registration_date`) VALUES
-(1, 'aaa', 'a@gmail.com', '$2y$10$MDs8iuQu6wb5MwtL1vXHGO5nIFibBXDl6ZgBAr9mS9OLIjoPxhC8S', 'freelancer', '2023-11-10 06:28:34'),
-(2, 'aa', 'aaa@gmail.com', '123456', 'client', '2023-11-12 14:45:07'),
-(3, 'abir', 'arshadabedin@outlook.com', 'aA123456', 'client', '2023-11-12 20:30:37'),
-(4, 'arshad', 'arshadabedin@outlook.com', 'aA123456', 'freelancer', '2023-11-13 03:57:32'),
-(5, 'abedin', 'b@gamil.com', 'aA123456', 'client', '2023-11-13 07:07:45'),
-(6, 'aaB', 'arshadabedin@outlook.com', 'aA123456@', 'client', '2023-12-11 06:22:19'),
-(7, 'aBa', 'arshadabedin@outlook.com', '@aA12345', 'client', '2023-12-11 06:23:15'),
-(8, 'aBc', 'arshadabedin@outlook.com', '@aA12345', 'client', '2023-12-11 06:23:52'),
-(9, 'aaaaaaaa', 'arshadabedin@outlook.com', '@Aa1234567', 'client', '2023-12-11 06:24:22'),
-(10, 'aaaaaaaaA', 'arshadabedin@outlook.com', '@Aa1234567', 'client', '2023-12-11 06:25:33'),
-(11, 'AAAA', 'arshadabedin@outlook.com', '@aA12345', 'client', '2023-12-11 06:26:02'),
-(12, 'AAAAb', 'arshadabedin@outlook.com', '@aA12345', 'client', '2023-12-11 06:31:40'),
-(13, 'AAAAbbb', 'arshadabedin@outlook.com', '@aA12345', 'client', '2023-12-11 06:31:44'),
-(14, 'aE', 'arshadabedin@outlook.com', '12345aA@', 'client', '2023-12-11 06:32:12'),
-(15, 'a', 'a@gmail.com', '123', 'client', '2023-12-11 13:25:29'),
-(16, 'q', 'a@gmail.com', '123', 'client', '2023-12-11 13:26:16'),
-(17, 'azim', 'arshadabedin@outlook.com', 'aA123456', 'client', '2023-12-11 14:58:36'),
-(18, 'shown', 'arshadabedin@outlook.com', 'aA123456', 'client', '2023-12-12 17:50:09'),
-(19, 'bb', 'c@gamil.com', 'aA123456', 'admin', '2023-12-13 02:44:53'),
-(20, 'sium', 'a@gmail.com', 'aA123456', 'client', '2023-12-13 05:26:49'),
-(21, 'ar', 'a@gmail.com', 'aA123456', 'client', '2023-12-13 07:55:07');
 
 --
 -- Indexes for dumped tables
@@ -202,13 +157,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -226,7 +181,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Constraints for dumped tables
